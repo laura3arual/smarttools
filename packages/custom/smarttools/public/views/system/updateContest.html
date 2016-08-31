@@ -1,0 +1,10 @@
+<div ng-controller="UpdateContestController">
+  <form>
+    Name:<input type="text" ng-model="currentContest.name">
+    Image:<input type="text" ng-model="currentContest.image">
+    Start Date: <input type="date">
+    End Date: <input type="date">
+    <span>{{currentContest.url}}</span>
+    <button ng-click="updateContest()">Save</button>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+<div ng-controller="CreateContestController">
+  <form>
+    Name:<input type="text" ng-model="newContest.name">
+    Image:<input type="text" ng-model="newContest.image">
+    Prize:<input type="text" ng-model="newContest.prizeDescription">
+    Start Date: <input type="date">
+    End Date: <input type="date">
+    <span>{{newContest.url}}</span>
+    <button ng-click="addContest()">Save</button>
+  </form>
+</div>

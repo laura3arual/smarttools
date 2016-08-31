@@ -1,0 +1,14 @@
+<section class="welcome container-fluid" data-ng-controller="ContestsController">
+  <h1>Lista de concursos</h1>
+  <ul>
+    <li ng-repeat="contest in contests">
+      <h1 ui-sref="create contest">{{contest.name}}</h1>
+      <a href="/contest/{{contest._id}}">Go Contest</a>
+      Url: <span>/contest/{{contest._id}}</span>
+      <img ng-src="{{contest.image}}" alt="">
+      <button ng-click="delete(contest)">Delete</button>
+      <button ng-click="update(contest)">Edit</button>
+    </li>
+<button ng-click="goToCreateContest()">Add contest!</button>
+  </ul>
+</section>
