@@ -11,8 +11,8 @@ angular.module('mean.system').controller('CreateVideoController', ['$scope', 'Gl
       video.state = "InProcess";
       video.$save( {contestId: video.contestId}, function(response) {
         $scope.upload($scope.file, response._id).then(function(){
-          console.log("Hemos recibido tu video y los estamos procesado para que sea publicado. Tan pronto el video quede publicado en la página del concurso te notificaremos por email.”.");
-          $state.go('contest', {contestId: video.contestId});
+          alert("Hemos recibido tu video y los estamos procesado para que sea publicado. Tan pronto el video quede publicado en la página del concurso te notificaremos por email.”.");
+          $state.go('public', {contestId: video.contestId});
         });
       });
     }

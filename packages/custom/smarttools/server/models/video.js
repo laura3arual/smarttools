@@ -19,9 +19,6 @@ var VideoSchema = new Schema({
   email: {
     type: String
   },
-  video: {
-    type: String
-  },
   description: {
     type: String
   },

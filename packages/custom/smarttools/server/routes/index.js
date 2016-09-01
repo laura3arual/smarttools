@@ -17,6 +17,7 @@ module.exports = function(Smarttools, app, auth, database, circles) {
     });
   });
 
+  //Contest CRUD
   app.route('/api/contests')
     .get(smartTools.all)
     .post(smartTools.create);
@@ -30,6 +31,7 @@ module.exports = function(Smarttools, app, auth, database, circles) {
 
   var videoController = require('./../controllers/video')();
 
+  //Video CRUD
   app.route('/api/contests/:contestId/video')
     .get(videoController.all)
     .post(videoController.create);
@@ -41,21 +43,25 @@ module.exports = function(Smarttools, app, auth, database, circles) {
 
   app.param('videoId', videoController.video);
 
-  var storage = multer.diskStorage({ //multers disk storage settings
-    destination: function (req, file, cb) {
-      cb(null, './uploads/')
-    },
-    filename: function (req, file, cb) {
-      var datetimestamp = Date.now();
-      cb(null, req.params.videoId + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
-    }
-  });
-  var upload = multer({ //multer settings
-    storage: storage
+  //public link to videos by contest
+  app.route('/api/public/contests/:contestId').
+    get(videoController.convertedVideos);
+
+  //Upload a Video
+  var uploadVideo = multer({ //multer settings
+    storage: multer.diskStorage({ //multers disk storage settings
+      destination: function (req, file, cb) {
+        cb(null, './uploads/')
+      },
+      filename: function (req, file, cb) {
+        var datetimestamp = Date.now();
+        cb(null, req.params.videoId)
+      }
+    })
   }).single('file');
-  /** API path that will upload the files */
+
   app.route('/api/upload/video/:videoId').post(function(req, res) {
-    upload(req,res,function(err){
+    uploadVideo(req,res,function(err){
       if(err){
         res.json({error_code:1,err_desc:err});
         return;

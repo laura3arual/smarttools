@@ -77,10 +77,19 @@ angular.module('mean.smartTools').config(['$meanStateProvider', '$urlRouterProvi
       })
       .state('contest', {
         url: '/contest/:contestId',
-        templateUrl: 'smartTools/views/system/contest.html'
+        templateUrl: 'smartTools/views/system/contest.html',
+        resolve: {
+          loggedin: function($http, $q, $location, $timeout) {
+            return checkLoggedOut($http, $q, $location, $timeout);
+          }
+        }
+      })
+      .state('public', {
+        url: '/smarttools/:contestId',
+        templateUrl: 'smartTools/views/system/publicContest.html'
       })
       .state('createVideo', {
-        url: '/contests/:contestId/video/create',
+        url: '/smarttools/:contestId/video/create',
         templateUrl: 'smartTools/views/system/createVideo.html',
       });
   }
