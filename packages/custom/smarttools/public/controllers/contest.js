@@ -9,7 +9,8 @@ angular.module('mean.system').controller('ContestController', ['$scope', 'Global
           $scope.videos = contests;
         });
       });
-    }
+    };
+
     $scope.loadVideos();
   }
 ]);

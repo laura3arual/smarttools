@@ -1,11 +1,73 @@
-<div ng-controller="CreateContestController">
-  <form>
-    Name:<input type="text" ng-model="newContest.name">
-    Image:<input type="text" ng-model="newContest.image">
-    Prize:<input type="text" ng-model="newContest.prizeDescription">
-    Start Date: <input type="date">
-    End Date: <input type="date">
-    <span>{{newContest.url}}</span>
-    <button ng-click="addContest()">Save</button>
-  </form>
+<div class="smart-tools-contents" ng-controller="CreateContestController">
+
+
+  <div class="row">
+    <div class="col-small-12 col-md-6">
+      <form class="form-horizontal">
+        <fieldset>
+
+          <!-- Form Name -->
+          <legend>Crear Concurso</legend>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Nombre</label>
+            <div class="col-md-4">
+              <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required ng-model="newContest.name">
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="prize">Pemio</label>
+            <div class="col-md-4">
+              <input id="prize" name="prize" type="text" placeholder="El premio al mejor video" class="form-control input-md" required ng-model="newContest.prizeDescription">
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="image">Imagen</label>
+            <div class="col-md-4">
+              <input id="image" name="image" type="text" placeholder="Imagen del Banner" class="form-control input-md" required ng-model="newContest.image">
+
+            </div>
+          </div>
+
+          <!-- Prepended text-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="startDate">Fecha de Inicio</label>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon"></span>
+                <input id="startDate" name="startDate" class="form-control" placeholder="" type="date" required="">
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Prepended text-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="endDate">Fecha Fin</label>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon"></span>
+                <input id="endDate" name="endDate" class="form-control" placeholder="" type="date" required="">
+              </div>
+
+            </div>
+          </div>
+
+          <span>{{newContest.url}}</span>
+          <center>
+            <button class="btn btn-success" ng-click="addContest()">Crear</button>
+          </center>
+
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
 </div>
