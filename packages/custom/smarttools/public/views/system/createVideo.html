@@ -6,7 +6,14 @@
     Description: <input type="description">
     <span>{{newVideo.url}}</span>
     Video:<input type="fyle">
-    <div class="button" ngf-select="upload($file)">Upload on file select</div>
+    <input
+      type="file"
+      ngf-select
+      ng-model="file"
+      name="file"
+      ngf-pattern="'video/*'"
+      accept="video/*"
+    />
     <button ng-click="addVideo()">Save</button>
   </form>
 </div>

@@ -82,11 +82,6 @@ angular.module('mean.smartTools').config(['$meanStateProvider', '$urlRouterProvi
       .state('createVideo', {
         url: '/contests/:contestId/video/create',
         templateUrl: 'smartTools/views/system/createVideo.html',
-        resolve: {
-          loggedin: function($http, $q, $location, $timeout) {
-            return checkLoggedOut($http, $q, $location, $timeout);
-          }
-        }
       });
   }
 ]).config(['$locationProvider',
