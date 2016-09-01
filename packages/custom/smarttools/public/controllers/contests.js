@@ -2,6 +2,7 @@
 
 angular.module('mean.system').controller('ContestsController', ['$scope', 'Global', 'Contest', '$state', 'MeanUser',
   function($scope, Global, Contest, $state, MeanUser) {
+  $scope.currentHost = location.host;
     $scope.newContest = {};
     $scope.delete = function(contest){
       var contest = Contest.get({contestId: contest._id}, function(){

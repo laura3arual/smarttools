@@ -89,6 +89,19 @@ module.exports = function(VideoController, app, user) {
         }
         res.json(videos);
       });
+    },
+    /**
+     * List of Videos
+     */
+    convertedVideos: function (req, res) {
+      Video.find({contestId: req.params.contestId, state: 'Converted'}).sort('-created').populate('user', 'name username').exec(function (err, videos) {
+        if (err) {
+          return res.status(500).json({
+            error: 'Cannot list the videos'
+          });
+        }
+        res.json(videos);
+      });
     }
   };
 }

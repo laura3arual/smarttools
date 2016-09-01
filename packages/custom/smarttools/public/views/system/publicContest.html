@@ -1,8 +1,9 @@
-<div ng-controller="ContestController">
+<div ng-controller="PublicContestController">
   <h1>{{currentContest.name}}</h1>
   <div>Prize: {{currentContest.prizeDescription}}</div>
 
   <ul ng-repeat="video in videos">
     <li>{{video.name}}</li>
   </ul>
+  <a ui-sref="createVideo({contestId: currentContestId})">Add new video</a>
 </div>
