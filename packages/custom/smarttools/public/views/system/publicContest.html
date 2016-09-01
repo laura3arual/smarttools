@@ -4,6 +4,7 @@
 
   <ul ng-repeat="video in videos">
     <li>{{video.name}}</li>
+    <div ng-bind-html="htmlVideoTags[video._id]" class="htmlComment"></div>
   </ul>
   <a ui-sref="createVideo({contestId: currentContestId})">Add new video</a>
 </div>
