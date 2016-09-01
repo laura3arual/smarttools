@@ -1,14 +1,26 @@
-<section class="welcome container-fluid" data-ng-controller="ContestsController">
-  <h1>Lista de concursos</h1>
-  <ul>
-    <li ng-repeat="contest in contests">
-      <h1 ui-sref="create contest">{{contest.name}}</h1>
-      <a href="/contest/{{contest._id}}">Go Contest</a>
-      Public Url: <span>{{currentHost}}/smarttools/{{contest._id}}</span>
-      <img ng-src="{{contest.image}}" alt="">
-      <button ng-click="delete(contest)">Delete</button>
-      <button ng-click="update(contest)">Edit</button>
-    </li>
-<button ng-click="goToCreateContest()">Add contest!</button>
-  </ul>
+<section class="welcome container-fluid list-contests smart-tools-contents" data-ng-controller="ContestsController">
+  <h1>Lista de Concursos</h1>
+
+  <button class="btn btn-success" ng-click="goToCreateContest()">Crear Concurso</button>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-3 contest" ng-repeat="contest in contests">
+      <div class="thumbnail">
+        <img ng-src="{{contest.image}}" alt="Imagen del Concurso">
+        <div class="caption">
+          <h3>{{contest.name}}</h3>
+          <p>
+            <strong>Premio: </strong> {{contest.prizeDescription}}
+          </p>
+          <p>
+            <strong>URL:</strong> <a href="/contest/{{contest._id}}">{{currentHost}}/smarttools/{{contest._id}}</a>
+          </p>
+          <p>
+            <button class="btn btn-default" ng-click="delete(contest)">Eliminar</button>
+            <button class="btn btn-primary" ng-click="update(contest)">Editar</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
