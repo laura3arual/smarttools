@@ -13,7 +13,7 @@
             <strong>Premio: </strong> {{contest.prizeDescription}}
           </p>
           <p>
-            <strong>URL:</strong> <a href="/contest/{{contest._id}}">{{currentHost}}/smarttools/{{contest._id}}</a>
+            <strong>URL:</strong> <a ng-href="{{currentHost}}/smarttools/{{contest._id}}">{{currentHost}}/smarttools/{{contest._id}}</a>
           </p>
           <p>
             <button class="btn btn-default" ng-click="delete(contest)">Eliminar</button>

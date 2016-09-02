@@ -1,9 +1,10 @@
 'use strict';
 
 //Setting up route
-angular.module('mean.smartTools').config(['$meanStateProvider', '$urlRouterProvider',
-  function($meanStateProvider, $urlRouterProvider) {
+angular.module('mean.smartTools').config(['$meanStateProvider', '$urlRouterProvider', '$compileProvider',
+  function($meanStateProvider, $urlRouterProvider, $compileProvider) {
 
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(http|https?|ftp|mailto|chrome-extension):/);
     var checkLoggedOut = function($http, $q, $location, $timeout) {
       var deferred = $q.defer();
 
