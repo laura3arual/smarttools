@@ -24,6 +24,9 @@ var VideoSchema = new Schema({
   },
   state: {
     type: String
+  },
+  uploadDate: {
+    type: Date
   }
 });
 

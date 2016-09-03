@@ -6,6 +6,7 @@ angular.module('mean.system').controller('CreateVideoController', ['$scope', 'Gl
     $scope.newVideo = {};
 
     $scope.addVideo = function(){
+      //$scope.newVideo.uploadDate = new Date();
       var video = new Video($scope.newVideo);
       video.contestId = $stateParams['contestId'];
       video.state = "InProcess";
@@ -15,7 +16,8 @@ angular.module('mean.system').controller('CreateVideoController', ['$scope', 'Gl
           $state.go('public', {contestId: video.contestId});
         });
       });
-    }
+    };
+
     $scope.upload = function(file, videoId){
       var defer = new $q.defer();
       Upload.upload({
@@ -31,6 +33,6 @@ angular.module('mean.system').controller('CreateVideoController', ['$scope', 'Gl
         console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
       });
       return defer.promise;
-    }
+    };
   }
 ]);

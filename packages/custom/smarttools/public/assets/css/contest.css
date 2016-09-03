@@ -1,4 +1,4 @@
-.smart-tools-contents{
+.smart-tools-contents {
   margin-top: 20px;
 }
 
@@ -7,12 +7,22 @@
 }
 
 .contest img {
-  max-height: 170px;
+  max-height: 107px;
 }
 
 .video p {
   font-weight: 400;
   margin: 0;
+}
+
+.contest-container {
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}
+
+.contest-container .media-object {
+  max-height: 122px;
 }
 
 

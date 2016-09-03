@@ -1,15 +1,28 @@
 'use strict';
 
-angular.module('mean.system').controller('PublicContestController', ['$scope', 'Global', 'Contest', '$state', '$stateParams', '$http', '$sce',
-  function($scope, Global, Contest, $state, $stateParams, $http, $sce) {
+angular.module('mean.system').controller('PublicContestController', ['$scope', 'Global', 'Contest', 'Video', '$state', '$stateParams', '$http', '$sce',
+  function($scope, Global, Contest, Video, $state, $stateParams, $http, $sce) {
+
+    $scope.totalItems = 0;
+    $scope.currentPage = 1;
+    $scope.pageSize = 5;
+
     $scope.htmlVideoTags = {};
     $scope.currentContestId = $stateParams['contestId'];
-    $scope.loadVideos = function(){
-      $http.get('/api/public/contests/' + $stateParams['contestId']).then(function(response){
-        $scope.videos = response.data;
-        $scope.setHtmlTags($scope.videos);
+
+    $scope.loadVideos = function(){      
+
+      $http.get('/api/contests/' + $stateParams['contestId']).then(function(response){
+        $scope.currentContest = response.data;
+        console.log(response);
+        Video.query({contestId: $scope.currentContest._id}, function (contests) {
+            console.log(contests);
+            $scope.videos = contests;
+            $scope.totalItems = $scope.videos.length;
+            $scope.setHtmlTags($scope.videos);
+          });
       });
-    }
+    };
     $scope.loadVideos();
 
     $scope.setHtmlTags = function(videos){

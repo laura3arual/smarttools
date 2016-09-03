@@ -52,7 +52,7 @@ SmartTools.register(function(app, users, system, database) {
         }
       });
     });
-  }
+  };
 
 
   var convert = function(videos) {

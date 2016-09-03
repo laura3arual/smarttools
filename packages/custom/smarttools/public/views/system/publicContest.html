@@ -1,6 +1,7 @@
 
 <div class="smart-tools-contents" ng-controller="PublicContestController">
-  <div class="row">
+
+  <div class="row contest-container">
     <div class="col-sm-12 col-md-3 contest">
       <div class="thumbnail">
         <img ng-src="{{currentContest.image}}" alt="Imagen del Concurso">
@@ -20,18 +21,25 @@
       <div class="media video" ng-repeat="video in videos">
         <div class="media-left">
           <a href="#">
-            <img class="media-object" src="..." alt="...">
+            <img class="media-object" src="http://marcaespana.es/sites/all/themes/custom/metheme/images/hover-video.png" alt="...">
           </a>
         </div>
         <div class="media-body">
           <h4 class="media-heading">Fecha: {{video.name}}</h4>
+          <p><strong>ID:</strong> {{video.__v}}</p>
           <p><strong>Nombre:</strong> {{video.name}}</p>
           <p><strong>Apellido:</strong> {{video.lastName}}</p>
           <p><strong>Email:</strong> {{video.email}}</p>
+          <p><strong>Estado:</strong> {{video.state}}</p>
           <p><strong>Mensaje:</strong> {{video.description}}</p>
-          <div ng-bind-html="htmlVideoTags[video._id]" class="htmlComment"></div>
+          <video controls>
+            <source src="http://localhost:9000/57c816cdf9c4bac814f16c3e.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
+
+      <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
     </div>
   </div>
 

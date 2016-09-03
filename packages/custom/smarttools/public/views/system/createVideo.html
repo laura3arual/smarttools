@@ -1,21 +1,5 @@
 <div class="smart-tools-contents" ng-controller="CreateVideoController">
-  <form>
-    Name:<input type="text" ng-model="newVideo.name">
-    LastName:<input type="text" ng-model="newVideo.image">
-    Email: <input type="email" ng-model="newVideo.email">
-    Description: <input type="description" ng-model="newVideo.description">
-    <span>{{newVideo.url}}</span>
-    Video:<input type="fyle">
-    <input
-      type="file"
-      ngf-select
-      ng-model="file"
-      name="file"
-      ngf-pattern="'video/*'"
-      accept="video/*"
-    />
-    <button ng-click="addVideo()">Save</button>
-  </form>
+  
 
   <form class="form-horizontal">
     <fieldset>
@@ -63,18 +47,25 @@
         </div>
       </div>
 
-      <span>{{newVideo.url}}</span>
-      Video:<input type="fyle">
-      <input
-        type="file"
-        ngf-select
-        ng-model="file"
-        name="file"
-        ngf-pattern="'video/*'"
-        accept="video/*"
-      />
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="video">Video</label>
+        <div class="col-md-4">
+          <input type="fyle">
+          <input
+            type="file"
+            ngf-select
+            ng-model="file"
+            name="file"
+            ngf-pattern="'video/*'"
+            accept="video/*"
+          />
+        </div>
+      </div>
 
-      <button class="btn btn-success" ng-click="addVideo()">Save</button>
+      <center>
+        <button class="btn btn-success" ng-click="addVideo()">Save</button>
+      </center>
 
     </fieldset>
   </form>
