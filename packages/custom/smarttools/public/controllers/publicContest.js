@@ -31,6 +31,6 @@ angular.module('mean.system').controller('PublicContestController', ['$scope', '
           ' <video controls><source src="http://localhost:9000/' + video._id + '.mp4" type="video/mp4">' +
           'Your browser does not support the video tag.</video>');
       });
-    }
+    };
   }
 ]);

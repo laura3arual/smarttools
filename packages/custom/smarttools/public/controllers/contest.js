@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('mean.system')
-  .controller('ContestController', ['$scope', 'Global', 'Contest', '$state', '$stateParams', 'Video',
-    function ($scope, Global, Contest, $state, $stateParams, Video) {
+  .controller('ContestController', ['$scope', 'Global', 'Contest', '$state', '$stateParams', 'Video','$sce',
+    function ($scope, Global, Contest, $state, $stateParams, Video, $sce) {
 
       $scope.totalItems = 0;
       $scope.currentPage = 1;
       $scope.pageSize = 5;
+
+      $scope.htmlVideoTags = {};
 
       $scope.loadVideos = function () {
 
@@ -15,9 +17,18 @@ angular.module('mean.system')
             console.log(contests);
             $scope.videos = contests;
             $scope.totalItems = $scope.videos.length;
+            $scope.setHtmlTags($scope.videos);
           });
         });
 
+      };
+
+      $scope.setHtmlTags = function(videos){
+        videos.forEach(function(video){
+          $scope.htmlVideoTags[video._id] = $sce.trustAsHtml(
+            ' <video controls><source src="http://localhost:9000/' + video._id + '.mp4" type="video/mp4">' +
+            'Your browser does not support the video tag.</video>');
+        });
       };
 
 
@@ -26,7 +37,7 @@ angular.module('mean.system')
   ])
   .filter('startFrom', function () {
     return function (input, start) {
-      start = +start; //parse to int
+      start =+ start; //parse to int
       return input.slice(start);
     }
   });

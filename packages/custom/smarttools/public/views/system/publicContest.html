@@ -18,24 +18,19 @@
 
       <a class="btn btn-success" ui-sref="createVideo({contestId: currentContestId})">Add new video</a>
 
-      <div class="media video" ng-repeat="video in videos">
+      <div class="media video" ng-repeat="video in videos" ng-if="video.state === 'Converted' ">
         <div class="media-left">
           <a href="#">
-            <img class="media-object" src="http://marcaespana.es/sites/all/themes/custom/metheme/images/hover-video.png" alt="...">
+            <div ng-bind-html="htmlVideoTags[video._id]" class="htmlComment"></div>
           </a>
         </div>
         <div class="media-body">
           <h4 class="media-heading">Fecha: {{video.name}}</h4>
-          <p><strong>ID:</strong> {{video.__v}}</p>
+          <p><strong>ID:</strong> {{video._id}}</p>
           <p><strong>Nombre:</strong> {{video.name}}</p>
           <p><strong>Apellido:</strong> {{video.lastName}}</p>
           <p><strong>Email:</strong> {{video.email}}</p>
-          <p><strong>Estado:</strong> {{video.state}}</p>
-          <p><strong>Mensaje:</strong> {{video.description}}</p>
-          <video controls>
-            <source src="http://localhost:9000/57c816cdf9c4bac814f16c3e.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <p><strong>Mensaje:</strong> {{video.description}}</p>          
         </div>
       </div>
 
