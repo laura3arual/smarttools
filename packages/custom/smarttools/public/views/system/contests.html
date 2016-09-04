@@ -19,12 +19,13 @@
             <strong>Fecha Fin: </strong> {{contest.endDate}}
           </p>
           <p>
-            <strong>URL:</strong> <a ng-href="{{currentHost}}/smarttools/{{contest._id}}">{{currentHost}}/smarttools/{{contest._id}}</a>
+            <strong>URL:</strong> <a href="{{currentHost}}/smarttools/{{contest._id}}">{{currentHost}}/smarttools/{{contest._id}}</a>
           </p>
           <p>
             <button class="btn btn-danger" ng-click="delete(contest)">Eliminar</button>
             <button class="btn btn-warning" ng-click="update(contest)">Editar</button>
             <a href="contest/{{contest._id}}" class="btn btn-default">Ver</a>
+            <a href="smarttools/{{contest._id}}" class="btn btn-success">Home</a>
           </p>
         </div>
       </div>
