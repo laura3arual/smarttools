@@ -5,7 +5,7 @@ angular.module('mean.system').controller('PublicContestController', ['$scope', '
 
     $scope.totalItems = 0;
     $scope.currentPage = 1;
-    $scope.pageSize = 5;
+    $scope.pageSize = 3;
 
     $scope.htmlVideoTags = {};
     $scope.currentContestId = $stateParams['contestId'];
@@ -14,9 +14,7 @@ angular.module('mean.system').controller('PublicContestController', ['$scope', '
 
       $http.get('/api/contests/' + $stateParams['contestId']).then(function(response){
         $scope.currentContest = response.data;
-        console.log(response);
         Video.query({contestId: $scope.currentContest._id}, function (contests) {
-            console.log(contests);
             $scope.videos = contests;
             $scope.totalItems = $scope.videos.length;
             $scope.setHtmlTags($scope.videos);

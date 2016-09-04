@@ -1,18 +1,18 @@
 'use strict';
 
-angular.module('mean.system').controller('CreateVideoController', ['$scope', 'Global', 'Video', '$state', '$stateParams', 'Upload', '$q',
-  function($scope, Global, Video, $state, $stateParams, Upload, $q) {
+angular.module('mean.system').controller('CreateVideoController', ['$scope', 'Global', 'Video', '$state', '$stateParams', 'Upload', '$q','$uibModal',
+  function($scope, Global, Video, $state, $stateParams, Upload, $q,$uibModal) {
 
     $scope.newVideo = {};
 
     $scope.addVideo = function(){
-      //$scope.newVideo.uploadDate = new Date();
       var video = new Video($scope.newVideo);
       video.contestId = $stateParams['contestId'];
       video.state = "InProcess";
+      video.uploadDate = new Date();
       video.$save( {contestId: video.contestId}, function(response) {
         $scope.upload($scope.file, response._id).then(function(){
-          alert("Hemos recibido tu video y los estamos procesado para que sea publicado. Tan pronto el video quede publicado en la página del concurso te notificaremos por email.”.");
+          alert("Hemos recibido tu video y los estamos procesado para que sea publicado. Tan pronto el video quede publicado en la página del concurso te notificaremos por email.”.");          
           $state.go('public', {contestId: video.contestId});
         });
       });

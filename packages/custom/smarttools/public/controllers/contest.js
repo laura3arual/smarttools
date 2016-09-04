@@ -6,7 +6,7 @@ angular.module('mean.system')
 
       $scope.totalItems = 0;
       $scope.currentPage = 1;
-      $scope.pageSize = 5;
+      $scope.pageSize = 3;
 
       $scope.htmlVideoTags = {};
 
@@ -14,9 +14,9 @@ angular.module('mean.system')
 
         $scope.currentContest = Contest.get({contestId: $stateParams['contestId']}, function () {
           Video.query({contestId: $scope.currentContest._id}, function (contests) {
-            console.log(contests);
             $scope.videos = contests;
             $scope.totalItems = $scope.videos.length;
+            console.log($scope.totalItems);
             $scope.setHtmlTags($scope.videos);
           });
         });
@@ -37,6 +37,8 @@ angular.module('mean.system')
   ])
   .filter('startFrom', function () {
     return function (input, start) {
+      if (!input || !input.length) { return; }
+
       start =+ start; //parse to int
       return input.slice(start);
     }
