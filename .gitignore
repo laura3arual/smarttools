@@ -75,6 +75,5 @@ modules/views/
 
 #webpack
 /bundle
-
 /uploads/*
 /convertedVideos/*

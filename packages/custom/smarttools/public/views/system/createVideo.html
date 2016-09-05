@@ -1,12 +1,73 @@
-<div ng-controller="CreateVideoController">
-  <form>
-    Name:<input type="text" ng-model="newVideo.name">
-    LastName:<input type="text" ng-model="newVideo.image">
-    Email: <input type="email">
-    Description: <input type="description">
-    <span>{{newVideo.url}}</span>
-    Video:<input type="fyle">
-    <div class="button" ngf-select="upload($file)">Upload on file select</div>
-    <button ng-click="addVideo()">Save</button>
+<div class="smart-tools-contents" ng-controller="CreateVideoController">
+  
+
+  <form class="form-horizontal">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Crear Video</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="name">Nombre</label>
+        <div class="col-md-4">
+          <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required
+                 ng-model="newVideo.name">
+
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="lastName">Apellido</label>
+        <div class="col-md-4">
+          <input id="lastName" name="lastName" type="text" placeholder="" class="form-control input-md" required
+                 ng-model="newVideo.lastName">
+
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="email">Correo Electrónico</label>
+        <div class="col-md-4">
+          <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required
+                 ng-model="newVideo.email">
+
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="description">Descripción</label>
+        <div class="col-md-4">
+          <input id="description" name="description" type="text" placeholder="" class="form-control input-md" required
+                 ng-model="newVideo.description">
+
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="video">Video</label>
+        <div class="col-md-4">
+          <input type="fyle" ng-show="false">
+          <input
+            type="file"
+            ngf-select
+            ng-model="file"
+            name="file"
+            ngf-pattern="'video/*'"
+            accept="video/*"
+          />
+        </div>
+      </div>
+
+      <center>
+        <button class="btn btn-success" ng-click="addVideo()">Save</button>
+      </center>
+
+    </fieldset>
   </form>
+
 </div>

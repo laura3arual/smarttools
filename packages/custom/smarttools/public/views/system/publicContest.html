@@ -1,4 +1,5 @@
-<div class="smart-tools-contents" ng-controller="ContestController">
+
+<div class="smart-tools-contents" ng-controller="PublicContestController">
 
   <div class="row contest-container">
     <div class="col-sm-12 col-md-3 contest">
@@ -14,26 +15,26 @@
     </div>
 
     <div class="col-sm-12 col-md-9">
-      <div class="media video" ng-repeat="video in videos | orderBy : 'uploadDate' : true | startFrom:(currentPage-1)*pageSize | limitTo:pageSize">
+
+      <a class="btn btn-success" ui-sref="createVideo({contestId: currentContestId})">Add new video</a>
+
+      <div class="media video" ng-repeat="video in videos | orderBy : 'uploadDate' : true | startFrom:(currentPage-1)*pageSize | limitTo:pageSize" 
+          ng-if="video.state === 'Converted' ">
         <div class="media-left">
-          <a href="#" ng-if="video.state === 'Converted' ">
+          <a href="#">
             <div ng-bind-html="htmlVideoTags[video._id]" class="htmlComment"></div>
           </a>
-          <video width="320" height="240" controls>
-            <source src="./ellen" type='video/ogg; codecs="theora, vorbis"'>
-          </video>
         </div>
         <div class="media-body">
           <h4 class="media-heading">Fecha: {{video.name}}</h4>
           <p><strong>Nombre:</strong> {{video.name}}</p>
           <p><strong>Apellido:</strong> {{video.lastName}}</p>
           <p><strong>Email:</strong> {{video.email}}</p>
-          <p><strong>Fecha:</strong> {{video.uploadDate}}</p>
-          <p ng-show="video.state === 'InProcess' "><strong>Estado:</strong> <span class="label label-warning">{{video.state}}</span> </p>
-          <p ng-show="video.state === 'Converted' "><strong>Estado:</strong> <span class="label label-success">{{video.state}}</span> </p>
-          <p><strong>Mensaje:</strong> {{video.description}}</p>
+          <p><strong>Mensaje:</strong> {{video.description}}</p>  
+          <p><strong>Fecha:</strong> {{video.uploadDate}}</p>        
         </div>
       </div>
+
       <ul uib-pagination total-items="totalItems" items-per-page="pageSize" ng-model="currentPage" ng-change="pageChanged()"></ul>
     </div>
   </div>

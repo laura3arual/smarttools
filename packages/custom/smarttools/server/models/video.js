@@ -6,8 +6,7 @@ var mongoose = require('mongoose'),
 var VideoSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   contestId: {
     type: String,
@@ -19,14 +18,14 @@ var VideoSchema = new Schema({
   email: {
     type: String
   },
-  video: {
-    type: String
-  },
   description: {
     type: String
   },
   state: {
     type: String
+  },
+  uploadDate: {
+    type: Date
   }
 });
 

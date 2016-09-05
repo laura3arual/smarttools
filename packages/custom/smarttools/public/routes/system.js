@@ -1,9 +1,10 @@
 'use strict';
 
 //Setting up route
-angular.module('mean.smartTools').config(['$meanStateProvider', '$urlRouterProvider',
-  function($meanStateProvider, $urlRouterProvider) {
+angular.module('mean.smartTools').config(['$meanStateProvider', '$urlRouterProvider', '$compileProvider',
+  function($meanStateProvider, $urlRouterProvider, $compileProvider) {
 
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(http|https?|ftp|mailto|chrome-extension):/);
     var checkLoggedOut = function($http, $q, $location, $timeout) {
       var deferred = $q.defer();
 
@@ -77,16 +78,20 @@ angular.module('mean.smartTools').config(['$meanStateProvider', '$urlRouterProvi
       })
       .state('contest', {
         url: '/contest/:contestId',
-        templateUrl: 'smartTools/views/system/contest.html'
-      })
-      .state('createVideo', {
-        url: '/contests/:contestId/video/create',
-        templateUrl: 'smartTools/views/system/createVideo.html',
+        templateUrl: 'smartTools/views/system/contest.html',
         resolve: {
           loggedin: function($http, $q, $location, $timeout) {
             return checkLoggedOut($http, $q, $location, $timeout);
           }
         }
+      })
+      .state('public', {
+        url: '/smarttools/:contestId',
+        templateUrl: 'smartTools/views/system/publicContest.html'
+      })
+      .state('createVideo', {
+        url: '/smarttools/:contestId/video/create',
+        templateUrl: 'smartTools/views/system/createVideo.html',
       });
   }
 ]).config(['$locationProvider',
