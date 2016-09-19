@@ -27,7 +27,7 @@ module.exports = function(VideoController, app, user) {
 
       video.save(function (err) {
         if (err) {
-          return res.status(500).json({
+          return res.status(500).json({ 
             error: 'Cannot save the video'
           });
         }
