@@ -6,8 +6,7 @@ var mongoose = require('mongoose'),
 var ContestSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   image: {
     type: String

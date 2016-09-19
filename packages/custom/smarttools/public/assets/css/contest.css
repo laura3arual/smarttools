@@ -22,8 +22,10 @@
 }
 
 .contest-container .media-object {
-  max-height: 122px;
+  max-height: 122px; 
 }
 
-
-
+.thumb {
+  max-width: 222px;
+  display: inline;
+}
