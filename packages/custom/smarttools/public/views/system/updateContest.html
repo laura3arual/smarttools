@@ -31,8 +31,10 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="image">Imagen</label>
             <div class="col-md-4">
-              <input id="image" name="image" type="text" placeholder="Imagen del Banner" class="form-control input-md" required ng-model="currentContest.image">
-
+              <div class="button" ngf-select="upload($file)" ng-model="file" name="file" ngf-pattern="'image/*'"
+              ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+              ngf-resize="{width: 100, height: 100}">
+              <img class="thumb" ngf-thumbnail="file || 'http://www.uploadhinh.com/content/images/system/logo_homepage_20150714083101.png'"></div>
             </div>
           </div>
 
@@ -42,7 +44,7 @@
             <div class="col-md-4">
               <div class="input-group">
                 <span class="input-group-addon"></span>
-                <input id="startDate" name="startDate" class="form-control" placeholder="" type="date" required="">
+                <input id="startDate" name="startDate" class="form-control" placeholder="" type="date" required="" ng-model="currentContest.startDate">
               </div>
 
             </div>
@@ -54,7 +56,7 @@
             <div class="col-md-4">
               <div class="input-group">
                 <span class="input-group-addon"></span>
-                <input id="endDate" name="endDate" class="form-control" placeholder="" type="date" required="">
+                <input id="endDate" name="endDate" class="form-control" placeholder="" type="date" required="" ng-model="currentContest.endDate">
               </div>
 
             </div>
