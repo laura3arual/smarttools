@@ -116,10 +116,10 @@ SmartTools.register(function(app, users, system, database) {
           error: 'Cannot list the videos'
         });
       }
-      if(videos.length)
+      /*if(videos.length)
         convert(_.filter(videos, function(video){
           return queue.indexOf(video._id.toJSON()) === -1;
-        }));
+        }));*/
     });
   });
 
